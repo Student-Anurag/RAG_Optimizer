@@ -1,16 +1,17 @@
 import os
 import ast
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 
 _llm = None
 
-def _get_llm() -> ChatGoogleGenerativeAI:
+def _get_llm() -> ChatGroq:
     global _llm
     if _llm is None:
-        _llm = ChatGoogleGenerativeAI(
-            model=os.getenv("GOOGLE_MODEL", "gemma-3-27b-it"),
-            google_api_key=os.getenv("GOOGLE_API_KEY"),
-            temperature=0.4,
+        _llm = ChatGroq(
+            model="llama-3.1-8b-instant",
+            api_key=os.getenv("GROQ_API_KEY"),
+            temperature=0
         )
     return _llm
 

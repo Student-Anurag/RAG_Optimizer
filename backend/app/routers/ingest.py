@@ -35,7 +35,7 @@ async def upload_document(file: UploadFile = File(...)):
         
         return IngestResponse(
             message=f"Successfully processed {file.filename}",
-            chunks_created=chunks_created,
+            chunk_created=chunks_created,
             pipeline="Hybrid Chroma + BM25"
         )
         

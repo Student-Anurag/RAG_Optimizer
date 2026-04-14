@@ -9,10 +9,12 @@ from backend.app.pipelines.reranker import rerank
 from backend.app.pipelines.semantic_cache import get_cached, set_cache
 from backend.app.models import PipelineResult 
 
-# Fix: Use stable model name
-llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash", 
-    google_api_key=os.getenv("GOOGLE_API_KEY"),
+import os
+from langchain_groq import ChatGroq
+
+llm = ChatGroq(
+    model="llama-3.1-8b-instant",
+    api_key=os.getenv("GROQ_API_KEY"),
     temperature=0
 )
 
