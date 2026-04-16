@@ -1,6 +1,6 @@
 import time
 import os
-from langchain_google_genai import ChatGoogleGenerativeAI
+
 from langchain_core.documents import Document
 
 from backend.app.pipelines.query_rewriter import rewrite_query
@@ -15,8 +15,7 @@ from langchain_groq import ChatGroq
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
     api_key=os.getenv("GROQ_API_KEY"),
-    temperature=0
-)
+    temperature=0.5,max_tokens=1024)
 
 def run_rag_pipeline(question: str, k: int = 4) -> PipelineResult:
     start = time.perf_counter()
