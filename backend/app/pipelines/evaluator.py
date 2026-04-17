@@ -20,51 +20,57 @@ def evaluate_pipelines(
     Returns a structured evaluation report for the frontend.
     """
 
-    system_message = """You are an expert RAG systems evaluator. 
-Your job is to objectively compare two AI-generated answers to the same question and evaluate them across multiple dimensions.
+    system_message = """You are an expert MLOps evaluator assessing two distinct RAG architectures. 
+Your job is to objectively compare two AI-generated answers to the same question. 
+
+## Context Asymmetry (CRITICAL)
+- **Answer A (Vectorless)** had access to the ENTIRE source document. It may include valid facts, equations, and details that are missing from the Context Data.
+- **Answer B (Vectored)** only had access to the limited text in the provided Context Data.
 
 ## Evaluation Dimensions (score each 1-10):
-- **Accuracy**: How factually correct is the answer based on the question context?
-- **Completeness**: Does the answer fully address all parts of the question?
-- **Clarity**: Is the answer well-structured, easy to understand, and clearly written?
-- **Conciseness**: Is the answer appropriately concise without missing key information?
-- **Citation Quality**: Are sources/sections properly cited to support claims?
+- **Accuracy**: Does the answer contain factual errors? 
+    - For Answer B: Score based STRICTLY on the provided Context Data.
+    - For Answer A: Assume its domain-specific claims (like equations or deep details) are accurate UNLESS they directly contradict the Context Data.
+- **Completeness**: Does the answer address the core of the user's question? (Answer A will naturally score higher here if the Context Data is sparse).
+- **Clarity**: Is the answer logically structured and easy to read?
+- **Conciseness**: Is the answer direct and free of unnecessary filler?
+- **Citation Quality**: Does the answer explicitly reference the source material?
 
 ## Rules
-- Be objective — do not favor either pipeline by default.
-- Base scores purely on answer quality, not on which pipeline produced it.
-- If both answers are equally good on a dimension, give them the same score.
-- Your reasoning must justify every score difference.
-- Reply ONLY with valid JSON. No markdown fences. No extra keys."""
+- Be objective. Base scores purely on the text provided.
+- Do not penalize Answer A's Accuracy or Grounding for including valid technical information (like math formulas) that extends beyond the Context Data.
+- If an answer is factually correct but lacks explicit citations, penalize 'Citation Quality', but DO NOT penalize 'Accuracy'.
+- Reply ONLY with valid JSON."""
 
 
-    # Detect hallucination before even calling the LLM
+    # Format the chunks into a readable string so the LLM has ground truth
+    context_text = "\n".join([f"Chunk {i+1}: {chunk}" for i, chunk in enumerate(vectored_chunks)]) if vectored_chunks else "NO CONTEXT PROVIDED."
 
+
+    # Detect hallucination risk before calling the LLM
     hallucination_warning = ""
     if len(vectored_chunks) == 0:
         hallucination_warning = """
-
 ## CRITICAL WARNING
-The Vector RAG retrieved_chunks is EMPTY. This means the vectored answer was generated 
-WITHOUT any document context — it is based entirely on the LLM's training data, 
-not the uploaded document. Apply a heavy penalty to accuracy and citation_quality 
-for the vectored answer, and flag it as potentially hallucinated.
+No context chunks were retrieved. Both answers must be evaluated heavily for potential hallucination based on general knowledge.
 """
 
-    user_message = f"""## Question
+    user_message = f"""## Context Data
+{context_text}
+
+## Question
 {query}
 
-## Answer A — Vectorless RAG (grounded in document)
+## Answer A
 {vectorless_answer}
 
-## Answer B — Vector RAG
+## Answer B
 {vectored_answer}
 
 {hallucination_warning}
 
 ## Your Task
-Evaluate both answers. If the hallucination warning is present, 
-heavily penalize vectored accuracy and mark grounding as FAILED.
+Evaluate both answers against the Context Data. If the hallucination warning is present, heavily penalize accuracy and mark grounding as FAILED for whichever answer lacks context.
 
 Reply ONLY in this exact JSON format:
 {{
@@ -87,7 +93,7 @@ Reply ONLY in this exact JSON format:
     }}
   }},
   "grounding": {{
-    "vectorless": "grounded",
+    "vectorless": "<grounded | hallucinated | partial>",
     "vectored": "<grounded | hallucinated | partial>"
   }},
   "winner": "<vectorless | vectored | tie>",
