@@ -1,27 +1,29 @@
 import os
-from fastapi import FastAPI
-from dotenv import load_dotenv
-
 import uuid
 import shutil
-from fastapi import  UploadFile, File, Form, HTTPException
+
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 import uvicorn
+
 load_dotenv()
- 
+
 from backend.app.pipelines.traditional_rag import run_rag_pipeline
 from backend.app.pipelines.vectorless_rag import get_or_build_tree, vectorless_rag
 from backend.app.pipelines.evaluator import evaluate_pipelines
+from backend.app.pipelines.hybrid_retriever import ingest as ingest_docs
 from backend.app.routers import ingest
 
+# ✅ FIX 1: include_router must be called at module level (startup),
+#            NOT inside a request handler. Calling it per-request causes
+#            duplicate route registration and never properly wires the router.
 app = FastAPI(
     title="RAG Optimizer API",
     description="Compares Traditional RAG vs Vectorless RAG and provides insights on performance and efficiency.",
     version="1.0.0",
 )
 
-
-# Allow frontend to call this API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -29,8 +31,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ✅ FIX 1 (continued): router registered once at startup
+app.include_router(ingest.router)
+
 TEMP_DIR = "./temp_uploads"
 os.makedirs(TEMP_DIR, exist_ok=True)
+
 
 @app.post("/evaluate")
 async def evaluate_document(
@@ -38,14 +44,11 @@ async def evaluate_document(
     query: str = Form(...)
 ):
     """
-    Main endpoint: Receives PDF and query, runs both RAG pipelines, 
+    Main endpoint: Receives PDF and query, runs both RAG pipelines,
     evaluates them, and returns the final recommendation.
-
     """
     if not file.filename.endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
-
-    # Step 1: Save uploaded file temporarily with a unique name
 
     unique_filename = f"{uuid.uuid4()}_{file.filename}"
     temp_path = os.path.join(TEMP_DIR, unique_filename)
@@ -54,38 +57,46 @@ async def evaluate_document(
         shutil.copyfileobj(file.file, buffer)
 
     try:
-        # Step 2: Build or load the document tree
-        print(f"⚙️ Processing: {file.filename}")
+        print(f"⚙️  Processing: {file.filename}")
+
+        # Step 1: Build or load the document tree (for vectorless pipeline)
         tree = get_or_build_tree(temp_path)
+
+        # ✅ FIX 2: Ingest the uploaded PDF into Chroma + BM25 BEFORE
+        #           running the traditional RAG pipeline.
+        #           Previously the vectored pipeline always queried an empty
+        #           Chroma DB because ingestion was never triggered per request.
+        print("📥 Ingesting document into vector store...")
+        from langchain_community.document_loaders import PyMuPDFLoader
+        loader = PyMuPDFLoader(temp_path)
+        raw_docs = loader.load()
+        num_chunks = ingest_docs(raw_docs)
+        print(f"✅ Ingested {num_chunks} chunks into Chroma + BM25")
 
         # Step 3: Run Vectorless Pipeline
         print("🚀 Running Vectorless Pipeline...")
-        ans_vectorless,vectorless_nodes_used = vectorless_rag(query, tree, verbose=False)
+        ans_vectorless, vectorless_nodes_used = vectorless_rag(query, tree, verbose=False)
 
-        # --- FUTURE INTEGRATION POINTS ---
-        app.include_router(ingest.router)
-        # Step 4: Run Vectored Pipeline 
+        # Step 4: Run Vectored Pipeline
         print("🚀 Running Vectored Pipeline...")
         result = run_rag_pipeline(query, k=4)
 
-        
         # Step 5: Run Evaluator Agent
-        print("⚖️ Evaluating Pipelines...")
+        print("⚖️  Evaluating Pipelines...")
         evaluation_report = evaluate_pipelines(
-    query             = query,
-    vectorless_answer = ans_vectorless,
-    vectored_answer   = result.answer,
-    vectored_chunks   = result.retrieved_chunks,
-    vectorless_nodes   = vectorless_nodes_used  # ← pass chunks
-)
+            query=query,
+            vectorless_answer=ans_vectorless,
+            vectored_answer=result.answer,
+            vectored_chunks=result.retrieved_chunks,
+            vectorless_nodes=vectorless_nodes_used,
+        )
 
-        # Return the payload to the frontend
         return {
             "filename": file.filename,
             "query": query,
             "vectorless_answer": ans_vectorless,
             "vectored_answer": result,
-            "recommendation": evaluation_report
+            "recommendation": evaluation_report,
         }
 
     except Exception as e:
@@ -93,25 +104,11 @@ async def evaluate_document(
         raise HTTPException(status_code=500, detail=str(e))
 
     finally:
-        # Step 6: Clean up temp file (the JSON tree cache remains safe)
         if os.path.exists(temp_path):
             os.remove(temp_path)
             print(f"🧹 Cleaned up temporary file: {unique_filename}")
 
 
-
-
-# Connect the routers to the main app
-# app.include_router(ingest.router)
-# app.include_router(query.router)
-
-
-
-
 @app.get("/health")
 def health():
     return {"status": "ok", "message": "RAG Optimizer API is running."}
-
-
-
-

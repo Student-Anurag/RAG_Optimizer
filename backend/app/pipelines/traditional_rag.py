@@ -4,18 +4,20 @@ import os
 from langchain_core.documents import Document
 
 from backend.app.pipelines.query_rewriter import rewrite_query
-from backend.app.pipelines.hybrid_retriever import retrieve 
+from backend.app.pipelines.hybrid_retriever import retrieve
 from backend.app.pipelines.reranker import rerank
 from backend.app.pipelines.semantic_cache import get_cached, set_cache
-from backend.app.models import PipelineResult 
+from backend.app.models import PipelineResult
 
-import os
 from langchain_groq import ChatGroq
 
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
     api_key=os.getenv("GROQ_API_KEY"),
-    temperature=0.5,max_tokens=1024)
+    temperature=0.5,
+    max_tokens=1024,
+)
+
 
 def run_rag_pipeline(question: str, k: int = 4) -> PipelineResult:
     start = time.perf_counter()
@@ -30,8 +32,8 @@ def run_rag_pipeline(question: str, k: int = 4) -> PipelineResult:
     # 2. Rewrite query
     queries = rewrite_query(question)
 
-    # 3. Hybrid retrieval (using the correct function name 'retrieve')
-    candidates = retrieve(queries, k=k*2)
+    # 3. Hybrid retrieval
+    candidates = retrieve(queries, k=k * 2)
 
     # 4. Rerank candidates
     reranked = rerank(question, candidates, top_n=k)
@@ -55,6 +57,11 @@ def run_rag_pipeline(question: str, k: int = 4) -> PipelineResult:
         "cache_hit": False,
     }
 
-    # 7. Store and return as Pydantic model
-    set_cache(question, result_data)
+    # ✅ FIX 4: Only cache when retrieval actually returned chunks.
+    #           Previously, a failed retrieval (empty top_docs) would be cached
+    #           and then served as a cache-hit on every subsequent identical query,
+    #           permanently poisoning those results for the lifetime of the server.
+    if top_docs:
+        set_cache(question, result_data)
+
     return PipelineResult(**result_data)

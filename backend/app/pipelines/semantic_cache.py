@@ -28,6 +28,12 @@ def get_cached(query: str) -> dict | None:
     return None
 
 def set_cache(query: str, result: dict) -> None:
+    # ✅ FIX 5: Never cache a result that has no retrieved chunks.
+    #           An empty-chunk result means retrieval failed; caching it would
+    #           cause every semantically similar future query to get a poisoned
+    #           cache hit instead of a fresh (potentially successful) retrieval.
+    if not result.get("retrieved_chunks"):
+        return
     enc = _get_encoder()
     _cache.append({
         "embedding": enc.encode(query),
