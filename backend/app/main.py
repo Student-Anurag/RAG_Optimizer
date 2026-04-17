@@ -60,7 +60,7 @@ async def evaluate_document(
 
         # Step 3: Run Vectorless Pipeline
         print("🚀 Running Vectorless Pipeline...")
-        ans_vectorless = vectorless_rag(query, tree, verbose=False)
+        ans_vectorless,vectorless_nodes_used = vectorless_rag(query, tree, verbose=False)
 
         # --- FUTURE INTEGRATION POINTS ---
         app.include_router(ingest.router)
@@ -75,7 +75,8 @@ async def evaluate_document(
     query             = query,
     vectorless_answer = ans_vectorless,
     vectored_answer   = result.answer,
-    vectored_chunks   = result.retrieved_chunks  # ← pass chunks
+    vectored_chunks   = result.retrieved_chunks,
+    vectorless_nodes   = vectorless_nodes_used  # ← pass chunks
 )
 
         # Return the payload to the frontend

@@ -273,7 +273,7 @@ def vectorless_rag(query: str, tree: list, verbose: bool = True) -> str:
     # Step 3: Generate answer
     answer = generate_answer(query, nodes)
 
-    return answer
+    return answer,nodes
 
 
 
