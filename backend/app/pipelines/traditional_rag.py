@@ -1,6 +1,10 @@
 import time
 import os
 
+from dotenv import load_dotenv
+from pathlib import Path
+load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent.parent / ".env")
+
 from langchain_core.documents import Document
 
 from backend.app.pipelines.query_rewriter import rewrite_query
@@ -57,10 +61,8 @@ def run_rag_pipeline(question: str, k: int = 4) -> PipelineResult:
         "cache_hit": False,
     }
 
-    # ✅ FIX 4: Only cache when retrieval actually returned chunks.
-    #           Previously, a failed retrieval (empty top_docs) would be cached
-    #           and then served as a cache-hit on every subsequent identical query,
-    #           permanently poisoning those results for the lifetime of the server.
+    # Only cache when retrieval actually returned chunks to avoid
+    # permanently poisoning results for failed retrievals.
     if top_docs:
         set_cache(question, result_data)
 
