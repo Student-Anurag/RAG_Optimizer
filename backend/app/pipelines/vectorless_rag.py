@@ -282,49 +282,4 @@ def vectorless_rag(query: str, tree: list, verbose: bool = True) -> str:
 
 
 
-# app = FastAPI()
-
-# # Allow frontend to call this API
-# app.add_middleware(
-#      CORSMiddleware,
-#      allow_origins=["*"],
-#      allow_methods=["*"],
-#      allow_headers=["*"]
-# )
-
-# TEMP_DIR = "./temp_uploads"
-# os.makedirs(TEMP_DIR, exist_ok=True)
-
-# @app.post("/query")
-# async def query_document(
-#      file: UploadFile = File(...),
-#      question: str    = ""
-# ):
-#      # Step 1 — Save uploaded file temporarily
-#     temp_path = os.path.join(TEMP_DIR, f"{uuid.uuid4()}_{file.filename}")
-    
-#     with open(temp_path, "wb") as f:
-#          shutil.copyfileobj(file.file, f)
-    
-#     try:
-#          # Step 2 — get_or_build_tree works EXACTLY as before
-#          # Same file from any user = same hash = instant cache hit
-#          tree = get_or_build_tree(temp_path)
-        
-#          # Step 3 — Run RAG pipeline
-#          answer = generate_answer(question, tree)
-        
-#          return {
-#              "answer":   answer,
-#              "filename": file.filename,
-#              "pages":    len(tree)
-#          }
-    
-    
-#     finally:
-#          # Step 4 — Clean up temp file (cache remains untouched)
-#          os.remove(temp_path)
-
-
-
 ################################################################################
