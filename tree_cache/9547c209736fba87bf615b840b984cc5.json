@@ -1,0 +1,331 @@
+[
+  {
+    "node_id": "0001",
+    "title": "Page 1",
+    "page_index": 1,
+    "text": "Machine Learning Techniques\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n1\nMachine Learning Methods-II\nDr. Santanu Ghorai\nProfessor\nDepartment of AEIE, HITK",
+    "nodes": []
+  },
+  {
+    "node_id": "0002",
+    "title": "Page 2",
+    "page_index": 2,
+    "text": "Dimensions of a Supervised Machine Learning Algorithm:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n2\n\uf071Consider a supervised machine learning problem. We have training samples:\n\uf0a7The sample is independent and identically distributed (iid) \n\uf0a7The ordering is not important and all instances are drawn from the same \njoint distribution \ud835\udc5d\ud835\udc65, \ud835\udc5f.\n\uf0a7\ud835\udc61indexes one of the N instances, \n\uf0a7\ud835\udc65\ud835\udc61is the arbitrary dimensional input, \n\uf0a7\ud835\udc5f\ud835\udc61is the associated desired output. \ud835\udc5f\ud835\udc61is 0/1 for two-class learning, is a \n\ud835\udc3e-dimensional binary vector (where exactly one of the dimensions is 1 \nand all others 0) for (\ud835\udc3e> 2)-class classification, and is a real value in \nregression.\n\uf071The goal is to build a good and useful approximation to \ud835\udc5f\ud835\udc61using the model \n\ud835\udc54\ud835\udc65\ud835\udc61\ud835\udf03. \nX = {\ud835\udc31\ud835\udc61, \ud835\udc5f\ud835\udc61}\ud835\udc61=1\n\ud835\udc41",
+    "nodes": []
+  },
+  {
+    "node_id": "0003",
+    "title": "Page 3",
+    "page_index": 3,
+    "text": "Dimensions of a Supervised Machine Learning Algorithm:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n3\n\uf071In doing this, there are three decisions we must make:\n1. Model we use in learning, denoted as             , where \ud835\udc88\u2219is the model, \n\ud835\udc99is the input, and \ud835\udf3dare the parameters.\n\uf0a7\ud835\udc88\u2219defines the hypothesis class \ud835\udcd7, and a particular value of\ud835\udf3d\ninstantiates one hypothesis h \u2208\ud835\udcd7. \n\uf0a7For example, in class learning, we have taken a rectangle as our model \nwhose four coordinates make up \ud835\udf3d. \n\uf0a7In linear regression, the model is the linear function of the input whose \nslope and intercept are the parameters learned from the data.\n\uf0a7The model (inductive bias), or \ud835\udcd7, is fixed by the machine learning system \ndesigner based on his or her knowledge of the application and the \nhypothesis \ud835\udc89is chosen (parameters are tuned) by a learning algorithm \nusing the training set, sampled from \ud835\udc5d\ud835\udc65, \ud835\udc5f.\ng \ud835\udc65\ud835\udf03",
+    "nodes": []
+  },
+  {
+    "node_id": "0004",
+    "title": "Page 4",
+    "page_index": 4,
+    "text": "Dimensions of a Supervised Machine Learning Algorithm:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n4\n\uf071Loss function, L(\u00b7), to compute the difference between the desired \noutput,\ud835\udc5f\ud835\udc61, and our approximation to it \ud835\udc54\ud835\udc65\ud835\udc61\ud835\udf03, given the current value \nof the parameters, \ud835\udf3d. \n\uf0a7The approximation error, or loss, is the sum of losses over the   \nindividual instances  \ud835\udc38\ud835\udf03\ud835\udc4b=  \ud835\udc61\ud835\udc3f(\ud835\udc5f\ud835\udc61, \ud835\udc54\ud835\udc65\ud835\udc61\ud835\udf03).\n\uf0a7\nIn class learning where outputs are 0/1, L(\u00b7) checks for equality or \nnot.\n\uf0a7\nIn regression, because the output is a numeric value, we have \nordering information for distance and one possibility is to use the \nsquare of the difference.",
+    "nodes": []
+  },
+  {
+    "node_id": "0005",
+    "title": "Page 5",
+    "page_index": 5,
+    "text": "Dimensions of a Supervised Machine Learning Algorithm:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n5\n\uf071Optimization procedure to find \ud835\udf03\u2217that minimizes the total error\n\ud835\udf03\u2217= arg min\n\ud835\udf03\n\ud835\udc38\ud835\udf03\ud835\udc4b\n\uf0a7\nWhere arg min returns the argument that minimizes.\n\uf0a7\nIn regression, we can solve analytically for the optimum. \n\uf0a7\nWith more complex models and error functions, we may need to \nuse more complex optimization methods, for example, gradient-\nbased methods, simulated annealing, or genetic algorithms.",
+    "nodes": []
+  },
+  {
+    "node_id": "0006",
+    "title": "Page 6",
+    "page_index": 6,
+    "text": "Cost Function or Loss Function:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n6\n\uf071In the context of an optimization algorithm, the function used to \nevaluate a candidate solution (i.e. a set of weights) is referred to as \nthe objective function.\n\uf071We may seek to maximize or minimize the objective function, meaning \nthat we are searching for a candidate solution that has the highest or \nlowest score respectively.\n\uf071Typically, with machine learning models, we seek to minimize the error. \nAs such, the objective function is often referred to as a cost function \nor a loss function and the value calculated by the loss function is \nreferred to as simply \u201closs.\u201d",
+    "nodes": []
+  },
+  {
+    "node_id": "0007",
+    "title": "Page 7",
+    "page_index": 7,
+    "text": "Different Types of Loss Function:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n7\n\uf071Mean Square Error/ Quadratic Loss/ L2-Loss: We define MSE loss \nfunction as the average of squared differences between the actual \nand the predicted value. It\u2019s the most commonly used regression loss \nfunction.\n\uf071The MSE loss function penalizes the model for making large errors by \nsquaring them and this property makes the MSE cost function less \nrobust to outliers.",
+    "nodes": []
+  },
+  {
+    "node_id": "0008",
+    "title": "Page 8",
+    "page_index": 8,
+    "text": "Different Types of Loss Function:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n8\n\uf071MEAN ABSOLUTE ERROR / L1 LOSS : We define MAE loss function \nas the average of absolute differences between the actual and the \npredicted value.\nMAE =\n \ud835\udc56=1\n\ud835\udc5b\n \ud835\udc4c\ud835\udc56\u2212\ud835\udc4c\ud835\udc56\n\ud835\udc5b\n\uf071The MAE loss function is more robust to outliers compared to the \nMSE loss function.",
+    "nodes": []
+  },
+  {
+    "node_id": "0009",
+    "title": "Page 9",
+    "page_index": 9,
+    "text": "Different Types of Loss Function:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n9\n\uf071BINARY CROSS-ENTROPY LOSS / LOG LOSS: The cross-entropy \nloss decreases as the predicted probability converges to the actual \nlabel. It measures the performance of a classification model whose \npredicted output is a probability value between 0 and 1.\n\uf071When the number of classes is more than 2, it\u2019s  binary classification:\n\uf071When the number of classes is more than 2, \nit\u2019s multiclass classification:",
+    "nodes": []
+  },
+  {
+    "node_id": "0010",
+    "title": "Page 10",
+    "page_index": 10,
+    "text": "Generalization and Overfitting:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n10\n\uf071A model/ hypothesis must generalize to correctly classify \ninstances not in the training data.\n\uf071Simply memorizing training examples is a consistent hypothesis \nthat does not generalize.\n\uf071Two errors: training error, and testing error.\n\uf071Usually testing error is called generalization error. Typically, \nthe training error is smaller than the generalization error.\n\uf071Measuring the generalization error is a major challenge in data \nmining and machine learning.\n\uf071Occam\u2019s razor (A philosophical tool used to eliminate improbable \noptions in a given situation) : Finding a simple hypothesis helps \nensure generalization.",
+    "nodes": []
+  },
+  {
+    "node_id": "0011",
+    "title": "Page 11",
+    "page_index": 11,
+    "text": "Generalization and Overfitting:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n11\n\uf071The training data contains information about the regularities in \nthe mapping from input to output. But it also contains noise\n\uf0fcThe target values may be unreliable.\n\uf0fcThere is sampling error. There will be accidental \nregularities just because of the particular training cases \nthat were chosen.\n\uf071When we fit the model, it cannot tell which regularities are real \nand which are caused by sampling error. \n\uf0fcSo it fits both kinds of regularity.\n\uf0fcIf the model is very flexible it can model the sampling \nerror really well. This is a disaster.",
+    "nodes": []
+  },
+  {
+    "node_id": "0012",
+    "title": "Page 12",
+    "page_index": 12,
+    "text": "Example of Overfitting and Good Fitting:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n12\n\uf071Overfitting function can not generalize well to unseen data\nOverfitting\nGood fitting",
+    "nodes": []
+  },
+  {
+    "node_id": "0013",
+    "title": "Page 13",
+    "page_index": 13,
+    "text": "Evaluate Your Hypothesis:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n13\n\uf071Consider a problem of predicting house price based on its size\nPrice ($)\nSize (ft)\nPrice ($)\nSize (ft)\nPrice ($)\nSize (ft)",
+    "nodes": []
+  },
+  {
+    "node_id": "0014",
+    "title": "Page 14",
+    "page_index": 14,
+    "text": "Evaluate Your Hypothesis:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n14\nPrice ($)\nSize (ft)\nPrice ($)\nSize (ft)\nPrice ($)\nSize (ft)\nUnderfit\nOverfit\nJust right\nHigh bias\nHigh variance\nToo simple\nToo Complex\nToo much regularization\nToo little regularization",
+    "nodes": []
+  },
+  {
+    "node_id": "0015",
+    "title": "Page 15",
+    "page_index": 15,
+    "text": "Learning a Class from Examples:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n15\n\uf071Class C of a \u201cfamily car\u201d\n\uf071Prediction: Is car x a family car?\n\uf071Knowledge extraction: What do people expect from a family car?\nX = {\ud835\udc31\ud835\udc61, \ud835\udc5f\ud835\udc61}\ud835\udc61=1\n\ud835\udc41\n\ud835\udc5f=  1 if \ud835\udc31is positive\n0 if \ud835\udc31is negative\n\ud835\udc31= \ud835\udc651\n\ud835\udc652\n\uf071Output: Positive (+) \nand negative (\u2013) \nexamples\n\uf071Input representation: \nx1: price, \nx2 : engine power",
+    "nodes": []
+  },
+  {
+    "node_id": "0016",
+    "title": "Page 16",
+    "page_index": 16,
+    "text": "Hypothesis class H:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n16\n\uf071What if the feature dimension is too high?\n\u210e(\ud835\udc31) =  1 if \u210eclassifies \ud835\udc31as positive\n0 if \u210eclassifies \ud835\udc31as negative\nError of h on H\n\ud835\udc38(\u210e|X) =  \n\ud835\udc61=1\n\ud835\udc41\n1 \u210e\ud835\udc31\ud835\udc61\u2260\ud835\udc5f\ud835\udc61",
+    "nodes": []
+  },
+  {
+    "node_id": "0017",
+    "title": "Page 17",
+    "page_index": 17,
+    "text": "S, G, and the Version Space:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n17\n\uf071What if the feature dimension is too high?\nmost specific hypothesis, S\nmost general hypothesis, G\nh \uf0ceH, between S and G is\nconsistent \nand make up the \nversion space\n(Mitchell, 1997)",
+    "nodes": []
+  },
+  {
+    "node_id": "0018",
+    "title": "Page 18",
+    "page_index": 18,
+    "text": "Evaluate Your Hypothesis:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n18\n\uf071Use the simpler one because\nSimpler to use \n(lower computational complexity)\n\uf071Easier to train (lower space \ncomplexity)\n\uf071Easier to explain (more interpretable)\n\uf071Generalizes better (lower \nvariance - Occam\u2019s razor)",
+    "nodes": []
+  },
+  {
+    "node_id": "0019",
+    "title": "Page 19",
+    "page_index": 19,
+    "text": "Model Selection & Generalization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n19\n\uf071Learning is an ill-posed problem; data is not sufficient to \nfind a unique solution\n\uf071The need for inductive bias, assumptions about H\n\uf071Generalization: How well a model performs on new data\n\uf071Overfitting: H more complex than C or f \n\uf071Underfitting: H less complex than C or f",
+    "nodes": []
+  },
+  {
+    "node_id": "0020",
+    "title": "Page 20",
+    "page_index": 20,
+    "text": "Model Selection & Generalization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n20\n\uf071\nUnderfitting: when model is too simple, both training and test errors are large\n\uf071\nOverfitting: when model is too complex and test errors are large although training \nerrors are small.\nOverfitting\nComplexity of a Decision\nTree := number of nodes \nIt uses\nUnderfitting\nComplexity of the Used Model",
+    "nodes": []
+  },
+  {
+    "node_id": "0021",
+    "title": "Page 21",
+    "page_index": 21,
+    "text": "Model Triple Trade-off:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n21\n\uf071There is a trade-off between three factors (Dietterich, \n2003):\n1. Complexity of learned classifier c (H),\n2. Training set size, N, \n3. Generalization error, E, on new data\n\uf0a8\nAs N , E\n\uf0a8\nAs c(H) , first E\nand then E\n\uf0a8\nAs c(H) the training error decreases for some time and \nthen stays constant (frequently at 0)",
+    "nodes": []
+  },
+  {
+    "node_id": "0022",
+    "title": "Page 22",
+    "page_index": 22,
+    "text": "Notes on Overfitting:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n22\n\uf071Overfitting results in models that are more complex than necessary: after \nlearning knowledge they \u201ctend to learn noise\u201d.\n\uf071More complex models tend to have more complicated decision boundaries \nand tend to be more sensitive to noise, missing examples,\u2026\n\uf071Training error no longer provides a good estimate of how well the model \nwill perform on previously unseen records.\n\uf071Need \u201cnew\u201d ways for estimating errors.",
+    "nodes": []
+  },
+  {
+    "node_id": "0023",
+    "title": "Page 23",
+    "page_index": 23,
+    "text": "Bias and Variance:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n23\n\uf071Bias refers to the error that is introduced by modeling a real life \nproblem by a much simpler problem\n\uf0fcE.g., linear regression assumes that there is a linear relationship \nbetween Y and X. In real life, some bias will be present.\n\uf0fcThe more flexible/complex a method is the less bias it will have.\n\uf071Variance refers to how much your estimate for f would change by if \nyou had a different training data set.\n\uf0fcGenerally, the more flexible a method is the more variance it has.",
+    "nodes": []
+  },
+  {
+    "node_id": "0024",
+    "title": "Page 24",
+    "page_index": 24,
+    "text": "Bias:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n24\n\uf071Bias is the difference between our actual and \npredicted values. \n\uf071Bias is the simple assumptions that our model \nmakes about our data to be able to predict \nnew data.\n\uf071When the Bias is high, assumptions made by \nour model are too basic, the model can\u2019t \ncapture the important features of our data.\n\uf071This means that our model hasn\u2019t captured \npatterns in the training data and hence \ncannot perform well on the testing data too. \nIf this is the case, our model cannot perform \non new data and cannot be sent into \nproduction.",
+    "nodes": []
+  },
+  {
+    "node_id": "0025",
+    "title": "Page 25",
+    "page_index": 25,
+    "text": "Bias and Variance:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n25\n\uf071Bull\u2019s Eye Graph for Bias and Variance",
+    "nodes": []
+  },
+  {
+    "node_id": "0026",
+    "title": "Page 26",
+    "page_index": 26,
+    "text": "Bias and Variance Trade off:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n26\n\uf071\u201cBias and variance are \ncomplements of each other\u201d.\n\uf071The increase of one will \nresult in the decrease of the \nother and vice versa.\n\uf071Hence, finding the right \nbalance of values is known as \nthe Bias-Variance Tradeoff.\n\uf071An ideal algorithm should \nneither underfit nor overfit\nthe data. The end goal of all \nMachine Learning Algorithms \nis to produce a function that \nhas both low-bias and low-\nvariance.",
+    "nodes": []
+  },
+  {
+    "node_id": "0027",
+    "title": "Page 27",
+    "page_index": 27,
+    "text": "Regularization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n27\n\uf071Regularization techniques replace the standard  error minimization  problem \nwith minimization of a regularization risk functional that comprises two \nterms.\n\uf071The first term is the usual error function that measures the distance \nbetween training data and the desired solution.\n\uf071The second is a term called smoothness functional \u03be \ud835\udf3d,that takes into \naccount the smoothness of the solution, which is a constraint that is \nimposed.\n\uf071The purpose of this is to find a solution that is simultaneously close to the \ndata points and smooth, and the natural approach is to choose the solution \nthat minimizes the regularization risk functional (also called the Tikhonov \nfunctional) \ud835\udc6c\ud835\udc79\ud835\udf3d\ud835\udc7f:\n\ud835\udc6c\ud835\udc79\ud835\udf3d\ud835\udc7f=  \n\ud835\udc95\n\ud835\udc73(\ud835\udc93\ud835\udc95, \ud835\udc88\ud835\udc99\ud835\udc95\ud835\udf3d)\n+ \ud835\udf40\ud835\udf43(\ud835\udf3d)\nCloseness to data\nSmoothness",
+    "nodes": []
+  },
+  {
+    "node_id": "0028",
+    "title": "Page 28",
+    "page_index": 28,
+    "text": "Regularization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n28\n\uf071Regularization means restricting a model to avoid overfitting by \nshrinking the coefficient estimates to zero. When a model suffers \nfrom overfitting, we should control the model's complexity.\n\uf071Technically, regularization avoids overfitting by adding a penalty to \nthe model's loss function:\nRegularization = Loss Function + Penalty\nThe idea is quite simple. To create a regularized model, we modify the \nobjective function by adding a penalizing term whose value is higher \nwhen the model is more complex.\n\uf071This problem is known in the literature as the bias-variance trade-off.\n\uf071The two most widely used types of regularization are called L1-\nregularization and L2- regularization.",
+    "nodes": []
+  },
+  {
+    "node_id": "0029",
+    "title": "Page 29",
+    "page_index": 29,
+    "text": "L2 and L1-Regularization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n29\n\uf071L2-Regularization:\n\uf071L2 Regularization, also called a ridge regression, adds the \u201csquared \nmagnitude\u201d of the coefficient as the penalty term to the loss function.\n\uf071L1-Regularization: \n\uf071L1-Regularization is popularly known as Least Absolute Selection and \nShrinkage Operator (LASSO).\n2\n2\n2\n2\n1\n1\n1\n1\n( )\n(\n)\n2\n2\n2\n2\nn\nt\nT\nR\ni\ni\nj\ni\nj\nE\nX\nY\nX\nY\n\uf06c\n\uf06c\n\uf071\n\uf071\n\uf071\n\uf071\n\uf071\n\uf03d\n\uf03d\n\uf03d\n\uf02d\n\uf02b\n\uf03d\n\uf02d\n\uf02b\n\uf0e5\n\uf0e5\n2\n2\n1\n1\n1\n1\n1\n( )\n(\n)\n2\n2\n2\n2\nn\nt\nT\nR\ni\ni\nj\ni\nj\nE\nX\nY\nX\nY\n\uf06c\n\uf06c\n\uf071\n\uf071\n\uf071\n\uf071\n\uf071\n\uf03d\n\uf03d\n\uf03d\n\uf02d\n\uf02b\n\uf03d\n\uf02d\n\uf02b\n\uf0e5\n\uf0e5",
+    "nodes": []
+  },
+  {
+    "node_id": "0030",
+    "title": "Page 30",
+    "page_index": 30,
+    "text": "L2-Regularization Vs. L1-Regularization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n30\n\uf071L2-Regularization: \u2013\n\uf0a7Insensitive to changes in data.\n\uf0a7Decreased variance: - Lower test \nerror. \n\uf0a7Closed-form solution. \n\uf0a7Solution is unique. \n\uf0a7All     tend to be non-zero. \n\uf0a7Can learn with linear number of \nirrelevant features. - E.g., only \nO(d) relevant features. \n\uf071L1-Regularization: \u2013\n\uf0a7Insensitive to changes in data.\n\uf0a7Decreased variance:  Lower test \nerror.\n\uf0a7Requires iterative solver. \n\uf0a7Solution is not unique.\n\uf0a7Many     tend to be zero. \n\uf0a7Can learn with exponential number \nof irrelevant features.- E.g., only \nO(log(d)) relevant features.\nj\n\uf071\nj\n\uf071",
+    "nodes": []
+  },
+  {
+    "node_id": "0031",
+    "title": "Page 31",
+    "page_index": 31,
+    "text": "Types of Model Selection and Generalization :\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n31\n\uf071There are two main types of techniques to approximate \nthe ideal case of model selection (based on Inductive \nbias); they are:\n\uf0fcProbabilistic Measures: Choose a model via in-sample \nerror and complexity.\n\uf0fcResampling Methods: Choose a model via estimated \nout-of-sample error.",
+    "nodes": []
+  },
+  {
+    "node_id": "0032",
+    "title": "Page 32",
+    "page_index": 32,
+    "text": "Model Selection: Probabilistic Measures\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n32\n\uf071Probabilistic Measures: \n\uf0fcProbabilistic Measures involve analytically scoring a candidate \nmodel using both its performance on the training dataset and \nthe complexity of the model.\n\uf0a7It is known that training error is optimistically biased, and \ntherefore is not a good basis for choosing a model.\n\uf0fcProbabilistic measures are appropriate when using simpler linear \nmodels like linear regression or logistic regression where the \ncalculating of model complexity penalty is known and tractable.\n\uf0a7e.g., Bayesian Information Criterion (BIC) and Structural \nRisk Minimization (SRM).",
+    "nodes": []
+  },
+  {
+    "node_id": "0033",
+    "title": "Page 33",
+    "page_index": 33,
+    "text": "Model Selection: Resampling Methods\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n33\n\uf071Resampling Methods: \n\uf0fcResampling methods seek to estimate the performance of a model (or more \nprecisely, the model development process) on out-of-sample data.\n\uf0a7\nSplitting the training dataset into sub-train and test sets, fitting a \nmodel on the sub train set, and evaluating it on the test set. \n\uf0a7\nThis process may then be repeated multiple times and the mean \nperformance across each trial is reported.\n\uf0a7\ne.g., Random train/test splits and Cross-Validation (k-fold, LOOCV, \netc.).\n\uf071Advantages: \n\uf0fcMost of the time probabilistic measures are not available, therefore \nresampling methods are used.\n\uf0fcProbably the simplest and most widely used method for estimating \nprediction error is cross-validation.",
+    "nodes": []
+  },
+  {
+    "node_id": "0034",
+    "title": "Page 34",
+    "page_index": 34,
+    "text": "Factors of Model Selection and Generalization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n34\n\uf071In all learning algorithms; that are \ntrained from example data, the triple \ntrade-off is performed by these three \nfactors:\n\uf071Factor 1: Validation Set\n\uf0fcIf we have access to data outside \nthe training set, we simulate this by \ndividing the training set we have into \n2 parts. \n\uf0fcWe use one part for training (i.e., to \nfit a hypothesis), and the remaining \npart is called the validation.",
+    "nodes": []
+  },
+  {
+    "node_id": "0035",
+    "title": "Page 35",
+    "page_index": 35,
+    "text": "Factors of Model Selection and Generalization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n35\n\uf071Factor 2: Cross-Validation \n\uf0fcGiven a set of possible \nhypothesis classes Hi, for each \nwe fit the best hi \u2208Hi on the \ntraining set. \n\uf0fcThen, assuming large enough \ntraining and validation sets, the \nhypothesis that is the most \naccurate on the validation set is \nthe best one (the one that has \nthe best inductive bias).\n\uf0fcThis process is called Cross-\nValidation.",
+    "nodes": []
+  },
+  {
+    "node_id": "0036",
+    "title": "Page 36",
+    "page_index": 36,
+    "text": "Factors of Model Selection and Generalization:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n36\n\uf071Factor 3: Test Set\n\uf0fcWe need a third set, a \ntest set, sometimes also \ncalled the publication set, \ncontaining examples not \nused in training or \nvalidation.",
+    "nodes": []
+  },
+  {
+    "node_id": "0037",
+    "title": "Page 37",
+    "page_index": 37,
+    "text": "Feature Selection:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n37\n\uf071Feature Selection is a process that chooses an optimal subset of\nfeatures according to a certain criterion.\n\uf071Why we need FS:\n\uf0fcto improve performance (in terms of speed, predictive power, simplicity\nof the model).\n\uf0fcto visualize the data for model selection.\n\uf0fcTo reduce dimensionality and remove noise.",
+    "nodes": []
+  },
+  {
+    "node_id": "0038",
+    "title": "Page 38",
+    "page_index": 38,
+    "text": "Reason for Feature Selection:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n38\n\uf071Reasons for performing FS may include:\n\uf0fcRemoving irrelevant data.\n\uf0fcIncreasing predictive accuracy of learned models.\n\uf0fcReducing the cost of the data.\n\uf0fcImproving learning efficiency, such as reducing storage requirements\nand computational cost.\n\uf0fcReducing the complexity of the resulting model description, improving\nthe understanding of the data and the model.",
+    "nodes": []
+  },
+  {
+    "node_id": "0039",
+    "title": "Page 39",
+    "page_index": 39,
+    "text": "Feature Selection and Feature Reduction:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n39\n\uf071Feature Selection seeks a subset of the n original features \nwhich retains most of the relevant information Filters, \nWrappers.\n\uf071Feature Reduction combines/fuses the n original features into a \nsmaller set of newly created features which hopefully retains \nmost of the relevant information from all the original features -\nData fusion (e.g. LDA, PCA, etc.)",
+    "nodes": []
+  },
+  {
+    "node_id": "0040",
+    "title": "Page 40",
+    "page_index": 40,
+    "text": "Feature Selection Methods:\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n40\n\uf071Univariate (looks at each feature independently of others)\n\uf0fcPearson correlation coefficient\n\uf0fcF-score\n\uf0fcChi-square\n\uf0fcSignal to noise ratio\n\uf0fcmutual information\n\uf071Multivariate (considers all features simultaneously)\n\uf0fcDimensionality reduction algorithms\n\uf0fcLinear classifiers such as support vector machine\n\uf0fcRecursive feature elimination",
+    "nodes": []
+  },
+  {
+    "node_id": "0041",
+    "title": "Page 41",
+    "page_index": 41,
+    "text": "Feature Selection: Filter Methods\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n41\n\uf071Given n original features, how do you select size of subset\n\uf0fcUser can preselect a size p (< n) \u2013 not usually as effective\n\uf0fcUsually try to find the smallest size where adding more features \ndoes not yield improvement\n\uf071Filters work independent of any particular learning algorithm\n\uf071Filters seek a subset of features which maximize some type of \nbetween class separability \u2013 or other merit score",
+    "nodes": []
+  },
+  {
+    "node_id": "0042",
+    "title": "Page 42",
+    "page_index": 42,
+    "text": "Feature Selection: Filter Methods\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n42\n\uf071Can score each feature independently and keep best subset\n\uf0fce.g. 1st order correlation with output, fast, less optimal\n\uf071Can score subsets of features together\n\uf0fcExponential number of subsets requires a more efficient, sub-\noptimal search approach\n\uf0fcHow to score features is independent of the ML model to be \ntrained on and is an important research area\n\uf0fcDecision Tree or other ML model pre-process",
+    "nodes": []
+  },
+  {
+    "node_id": "0043",
+    "title": "Page 43",
+    "page_index": 43,
+    "text": "Feature Selection: Wrapper Methods\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n43\n\uf071Optimizes for a specific learning algorithm\n\uf071The feature subset selection algorithm is a \"wrapper\" around the learning \nalgorithm\n\uf0fcPick a feature subset and pass it to learning algorithm\n\uf0fcCreate training/test set based on the feature subset\n\uf0fcTrain the learning algorithm with the training set\n\uf0fcFind accuracy (objective) with validation set\n\uf0fcRepeat for all feature subsets and pick the feature subset which gives \nthe highest predictive accuracy (or other objective)\n\uf071Basic approach is simple\n\uf071Variations are based on how to select the feature subsets, since there are \nan exponential number of subsets",
+    "nodes": []
+  },
+  {
+    "node_id": "0044",
+    "title": "Page 44",
+    "page_index": 44,
+    "text": "Feature Selection: Wrapper Methods\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n44\n\uf071Exhaustive Search - Exhausting\n\uf071Forward Search \u2013 O(n2 \u00b7 learning/testing time) - Greedy\n1.\nScore each feature by itself and add the best feature to the \ninitially empty set FS (FS will be our final Feature Set)\n2. Try each subset consisting of the current FS plus one remaining \nfeature and add the best feature to FS\n3. Continue until stop getting significant improvement (over a \nwindow)",
+    "nodes": []
+  },
+  {
+    "node_id": "0045",
+    "title": "Page 45",
+    "page_index": 45,
+    "text": "Feature Selection: Wrapper Methods\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n45\n\uf071Backward Search \u2013 O(n2 \u00b7 learning/testing time) - Greedy\n1.\nScore the initial complete FS \n2. Try each subset consisting of the current FS minus one feature in \nFS and drop the feature from FS causing least decrease in \naccuracy\n3. Continue until dropping any feature causes a significant decreases \nin accuracy\n\uf071Branch and Bound and other heuristic approaches available",
+    "nodes": []
+  },
+  {
+    "node_id": "0046",
+    "title": "Page 46",
+    "page_index": 46,
+    "text": "Feature Selection: Wrapper Methods\nFebruary 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n46\n\uf071PCA is one of the most common feature reduction techniques\n\uf071A linear method for dimensionality reduction\n\uf071Allows us to combine much of the information contained in n features into p \nfeatures where p < n\n\uf071PCA is unsupervised in that it does not consider the output class/value of \nan instance \u2013 There are other algorithms which do (e.g. Linear Discriminant \nAnalysis)\n\uf071PCA works well in many cases where data features have mostly linear \ncorrelations\n\uf071Non-linear dimensionality reduction is also a successful area and can give \nbetter results for data with significant non-linear correlations between the \ndata features",
+    "nodes": []
+  },
+  {
+    "node_id": "0047",
+    "title": "Page 47",
+    "page_index": 47,
+    "text": "February 2, 2026\nML Methods               S. Ghorai ( Dept. AEIE, HITK)\n47\nQUESTIONS?",
+    "nodes": []
+  }
+]

@@ -30,7 +30,9 @@ export default function ComparisonChart({ scores, reasoning }: ComparisonChartPr
       <div className="h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart data={data} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
-            <PolarGrid stroke="hsl(var(--border))" />
+            {/* FIX 4: visible grid lines against dark background */}
+            <PolarGrid stroke="rgba(255,255,255,0.15)" />
+            {/* FIX: white axis labels */}
             <PolarAngleAxis
               dataKey="metric"
               tick={{ fontSize: 12, fill: "#ffffff" }}
@@ -53,7 +55,7 @@ export default function ComparisonChart({ scores, reasoning }: ComparisonChartPr
             />
             <Legend
               formatter={(v) => (
-                <span style={{ fontSize: 12, color: "hsl(var(--muted-foreground))" }}>
+                <span style={{ fontSize: 12, color: "#ffffff" }}>
                   {v}
                 </span>
               )}
