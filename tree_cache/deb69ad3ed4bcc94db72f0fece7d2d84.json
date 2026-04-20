@@ -1,0 +1,37 @@
+[
+  {
+    "node_id": "0001",
+    "title": "Page 1",
+    "page_index": 1,
+    "text": "Minimum-Distance Classi\ufb01ers, Linear Discriminants\nMinimum-Distance Classi\ufb01ers,\nLinear Discriminants\nCS 650: Computer Vision\nMinimum-Distance Classi\ufb01ers, Linear Discriminants\nFeature Spaces, Prototypes, Minimum-Distance Classi\ufb01ers\nPatterns and Classes\nA pattern is a vector of measured features:\nx =\n\uf8ee\n\uf8ef\uf8ef\uf8ef\uf8f0\nx1\nx2\n...\nxn\n\uf8f9\n\uf8fa\uf8fa\uf8fa\uf8fb\nOur goal is to assign each unclassi\ufb01ed pattern x to one of a set\nof classes {\u03c9i}.",
+    "nodes": []
+  },
+  {
+    "node_id": "0002",
+    "title": "Page 2",
+    "page_index": 2,
+    "text": "Minimum-Distance Classi\ufb01ers, Linear Discriminants\nFeature Spaces, Prototypes, Minimum-Distance Classi\ufb01ers\nFeature Spaces\nCan think of each pattern as a point in a feature space:\nMinimum-Distance Classi\ufb01ers, Linear Discriminants\nFeature Spaces, Prototypes, Minimum-Distance Classi\ufb01ers\nFeature Spaces\nKey ideas:\n\u25b6Patterns from the same class should cluster together in\nfeature space\n\u25b6Supervised training: learn the properties of the cluster\n(distribution) for each class\n\u25b6Unsupervised training: \ufb01nd the clusters from scratch",
+    "nodes": []
+  },
+  {
+    "node_id": "0003",
+    "title": "Page 3",
+    "page_index": 3,
+    "text": "Minimum-Distance Classi\ufb01ers, Linear Discriminants\nFeature Spaces, Prototypes, Minimum-Distance Classi\ufb01ers\nMinimum-Distance Classi\ufb01er\n\u25b6Idea:\nUse a single prototype for each class \u03c9i\n(usually the class\u2019s mean mi)\n\u25b6Training:\nJust calculate each class\u2019s prototype (mean)\n\u25b6Classi\ufb01cation:\nAssign unlabeled patterns to the nearest prototype in the\nfeature space\nMinimum-Distance Classi\ufb01ers, Linear Discriminants\nDecision Boundaries\nDecision Boundaries\nIf we partition the feature space according to the nearest\nprototype, we create decision boundaries:",
+    "nodes": []
+  },
+  {
+    "node_id": "0004",
+    "title": "Page 4",
+    "page_index": 4,
+    "text": "Minimum-Distance Classi\ufb01ers, Linear Discriminants\nDecision Boundaries\nSimpler Calculation\nKey idea:\n\u25b6We don\u2019t really need to know the distances to the\nprototypes\u2014we just want to know which is closest.\n\u25b6Any monotonic function of the distance will also do:\nscalar multiplication, log, exponent, reciprocal, negation, ...\nminimizing\n\u2225x \u2212mi\u2225\nis the same as minimizing\n\u2225x \u2212mi\u22252\n=\n(x \u2212mi)T(x \u2212mi)\n=\nxTx \u22122xTmi + mT\ni mi\nis the same as minimizing\n\u22122xTmi + mT\ni mi\nis the same as maximizing\nxTmi \u22121\n2mT\ni mi\nMinimum-Distance Classi\ufb01ers, Linear Discriminants\nDecision Boundaries\nLinear Decision Boundaries\nTwo-class case:\ng1(x)\n=\nxTm1 \u22121\n2mT\n1 m1\ng2(x)\n=\nxTm2 \u22121\n2mT\n2 m2\nCreate a single decision function:\ng(x)\n=\ng1(x) \u2212g2(x)\n=\n\u0012\nxTm1 \u22121\n2mT\n1 m1\n\u0013\n\u2212\n\u0012\nxTm2 \u22121\n2mT\n2 m2\n\u0013\n=\nxT(m1 \u2212m2) \u22121\n2(mT\n1 m1 \u2212mT\n2 m2)",
+    "nodes": []
+  },
+  {
+    "node_id": "0005",
+    "title": "Page 5",
+    "page_index": 5,
+    "text": "Minimum-Distance Classi\ufb01ers, Linear Discriminants\nDecision Boundaries\nLinear Decision Boundaries\ng(x) = wTx + w0\nwhere\nw\n=\nm1 \u2212m2\nw0\n=\n\u22121\n2(mT\n1 m1 \u2212mT\n2 m2)\ng(x) > 0\nAssign x to \u03c91\ng(x) < 0\nAssign x to \u03c92\ng(x) = 0\nUndecided\nMinimum-Distance Classi\ufb01ers, Linear Discriminants\nDiscriminants\nDiscriminants\nIn general, a function used to test class membership is called a\ndiscriminant.\nThree approaches for multiple classes:\n1. Construct a single discriminant for each class that\nseparates \u03c9i from \u201cnot \u03c9i\u201d.\n2. Construct a discriminant gij between each pair of classes\n\u03c9i and \u03c9j:\ngij(x) = gi(x) \u2212gj(x)\n3. Construct a single discriminant gi(x) for each class \u03c9i, and\nassign x to class \u03c9i if gi(x) > gj(x) for all other classes \u03c9j.",
+    "nodes": []
+  }
+]

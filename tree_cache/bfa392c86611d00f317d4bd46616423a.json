@@ -1,0 +1,289 @@
+[
+  {
+    "node_id": "0001",
+    "title": "Page 1",
+    "page_index": 1,
+    "text": "AEIE4233-Machine Learning Techniques\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n1\nCorrelation-Covariance and \nRegression\nDr. Santanu Ghorai,\nProfessor,\nDepartment of AEIE, HITK",
+    "nodes": []
+  },
+  {
+    "node_id": "0002",
+    "title": "Page 2",
+    "page_index": 2,
+    "text": "Topics Covered:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n2\n\u2751Is there a relationship between x and y?\n\u2751Variance and Covariance of data\n\u2751What is the strength of this relationship? \n \n \n- Pearson\u2019s r\n\u2751Can we describe this relationship and use this to predict y from x?\n \n \n- Regression\n\u2751Is the relationship we have described statistically significant? \n \n \n- t test  \n\u2751Best fit line- Linear Regression\n\u2751Method of Least Square Regression\n\u2751How good a model",
+    "nodes": []
+  },
+  {
+    "node_id": "0003",
+    "title": "Page 3",
+    "page_index": 3,
+    "text": "Introduction: Some Definations\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n3\n\u2751Correlation Analysis is the study of the relationship between variables. \nIt is also defined as group of techniques to measure the association \nbetween two variables.\n\u2751Scatter Diagram is a chart that portrays the relationship between the \ntwo variables. It is the usual first step in correlations analysis\n\u2751The Dependent Variable is the variable being predicted or estimated.\n\u2751The Independent Variable provides the basis for estimation.  It is the \npredictor variable.",
+    "nodes": []
+  },
+  {
+    "node_id": "0004",
+    "title": "Page 4",
+    "page_index": 4,
+    "text": "Correlation Examples:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n4\n\u2751Is there an association between: \n\u2713Children\u2019s IQ and Parents\u2019 IQ\n\u2713Degree of social trust and number of membership in voluntary \nassociation \n\u2713Urban growth and air quality violations \n\u2713Research assistantship funding and number of publication by Ph.D. \nstudents\n\u2713Number of police patrol and number of crime \n\u2713Grade on exam and time on exam",
+    "nodes": []
+  },
+  {
+    "node_id": "0005",
+    "title": "Page 5",
+    "page_index": 5,
+    "text": "Scatter Plot:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n5\n\u2751The relationship between any two variables can be portrayed graphically on an x- \nand y- axis.  \n\u2751Each subject i1 has (x1, y1),  when scores for an entire sample are plotted, the \nresult is called scatter plot. \n\u2751Example- Determine whether there is a relationship between the number of sales \ncalls made in a month and the number of copiers sold  in that month.",
+    "nodes": []
+  },
+  {
+    "node_id": "0006",
+    "title": "Page 6",
+    "page_index": 6,
+    "text": "Direction of the Relationship:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n6\n\u2751Variables can be positively or negatively correlated or no correlation: \n\u2713Positive correlation: A value of one variable increase, value of other \nvariable increase. \n\u2713Negative correlation: A value of one variable increase, value of other \nvariable decrease.",
+    "nodes": []
+  },
+  {
+    "node_id": "0007",
+    "title": "Page 7",
+    "page_index": 7,
+    "text": "Variance vs. Covariance:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n7\n\u2751Do two variables change together?\n\u2751Variance:\n\u2713 Gives information on variability of a single variable.\n\u2751Covariance:\n\u2713Gives information on the degree to which two variables vary together.\n\u2713Note how similar the covariance is to variance: the equation simply multiplies x\u2019s \nerror scores by y\u2019s error scores as opposed to squaring x\u2019s error scores.\n1\n)\n(\n2\n1\n2\n\u2212\n\u2212\n= \uf0e5\n=\nn\nx\nx\nS\nn\ni\ni\nx\n1\n)\n)(\n(\n)\n,\ncov(\n1\n\u2212\n\u2212\n\u2212\n= \uf0e5\n=\nn\ny\ny\nx\nx\ny\nx\ni\nn\ni\ni",
+    "nodes": []
+  },
+  {
+    "node_id": "0008",
+    "title": "Page 8",
+    "page_index": 8,
+    "text": "Variance vs. Covariance (Contd.):\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n8\n\u2751First, a note on your sample:  \n\u2713If you\u2019re wishing to assume that your sample is representative of the \ngeneral population (RANDOM EFFECTS MODEL), use the degrees of \nfreedom (n \u2013 1) in your calculations of variance or covariance.\n\u2713But if you\u2019re simply wanting to assess your current sample (FIXED \nEFFECTS MODEL), substitute n for the degrees of freedom.",
+    "nodes": []
+  },
+  {
+    "node_id": "0009",
+    "title": "Page 9",
+    "page_index": 9,
+    "text": "Variance vs. Covariance (Contd.):\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n9\n\u2751When X   and Y   : cov (x,y) = pos.\n\u2751When X   and Y   : cov (x,y) = neg.\n\u2751When no constant relationship: cov (x,y) = 0\n1\n)\n)(\n(\n)\n,\ncov(\n1\n\u2212\n\u2212\n\u2212\n= \uf0e5\n=\nn\ny\ny\nx\nx\ny\nx\ni\nn\ni\ni",
+    "nodes": []
+  },
+  {
+    "node_id": "0010",
+    "title": "Page 10",
+    "page_index": 10,
+    "text": "Covariance Example:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n10\nx\ny\nx\nxi \u2212\ny\nyi \u2212\n(\nx\nix \u2212)(\ny\niy \u2212)\n0\n3\n-3\n0\n0\n2\n2\n-1\n-1\n1\n3\n4\n0\n1\n0\n4\n0\n1\n-3\n-3\n6\n6\n3\n3\n9\n3\n=\nx\n3\n=\ny\n\uf0e5= 7\n75\n.1\n4\n7\n1\n))\n)(\n(\n)\n,\ncov(\n1\n=\n=\n\u2212\n\u2212\n\u2212\n= \uf0e5\n=\nn\ny\ny\nx\nx\ny\nx\ni\nn\ni\ni\nWhat does this \nnumber tell us?",
+    "nodes": []
+  },
+  {
+    "node_id": "0011",
+    "title": "Page 11",
+    "page_index": 11,
+    "text": "Problem with Covariance:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n11\n\u2751The value obtained by covariance is dependent on the size of the \ndata\u2019s standard deviations: if large, the value will be greater than \nif small\u2026 even if the relationship between x and y is exactly the \nsame in the large versus small standard deviation datasets.",
+    "nodes": []
+  },
+  {
+    "node_id": "0012",
+    "title": "Page 12",
+    "page_index": 12,
+    "text": "Covariance Example:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n12\n\u2751Example of how covariance value relies on variance\nHigh variance data\nLow variance data\nSubject\nx\ny\nx error * y error\nx\ny\nX error * y error\n1\n101\n100\n2500\n54\n53\n9\n2\n81\n80\n900\n53\n52\n4\n3\n61\n60\n100\n52\n51\n1\n4\n51\n50\n0\n51\n50\n0\n5\n41\n40\n100\n50\n49\n1\n6\n21\n20\n900\n49\n48\n4\n7\n1\n0\n2500\n48\n47\n9\nMean\n51\n50\n51\n50\nSum of x error * y error :\n7000\nSum of x error * y error :\n28\nCovariance:\n1166.67\nCovariance:\n4.67",
+    "nodes": []
+  },
+  {
+    "node_id": "0013",
+    "title": "Page 13",
+    "page_index": 13,
+    "text": "Solution: Pearson\u2019s r \nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n13\n\u2751Covariance does not really tell us anything\n\u2713 Solution: standardise this measure\n\u2751Pearson\u2019s R: standardises the covariance value.\n\u2713  Divides the covariance by the multiplied standard deviations of X \nand Y: \ncov( , )\nxy\nx y\nx y\nr\ns s\n=\n\u2751N.B.:                are standard deviations of  x  and y, respectively.\n,\nx\ny\ns\ns",
+    "nodes": []
+  },
+  {
+    "node_id": "0014",
+    "title": "Page 14",
+    "page_index": 14,
+    "text": "Computation of Pearson\u2019s r: \nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n14\n1\n)\n)(\n(\n)\n,\ncov(\n1\n\u2212\n\u2212\n\u2212\n= \uf0e5\n=\nn\ny\ny\nx\nx\ny\nx\ni\nn\ni\ni\ny\nx\ni\nn\ni\ni\nxy\ns\ns\nn\ny\ny\nx\nx\nr\n)1\n(\n)\n)(\n(\n1\n\u2212\n\u2212\n\u2212\n= \uf0e5\n=\n1\n*\n1\n\u2212\n= \uf0e5\n=\nn\nZ\nZ\nr\nn\ni\ny\nx\nxy\ni\ni",
+    "nodes": []
+  },
+  {
+    "node_id": "0015",
+    "title": "Page 15",
+    "page_index": 15,
+    "text": "Strength of the Relationship:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n15\n\u2751The magnitude of correlation: \n\u2713Indicated by its numerical value\n\u2713Ignoring the sign\n\u2713Expresses the strength of the linear relationship between the variables.",
+    "nodes": []
+  },
+  {
+    "node_id": "0016",
+    "title": "Page 16",
+    "page_index": 16,
+    "text": "Strength of the Relationship:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n16",
+    "nodes": []
+  },
+  {
+    "node_id": "0017",
+    "title": "Page 17",
+    "page_index": 17,
+    "text": "Pearson\u2019s Correlation Coefficient:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n17\n\u2751There are many kinds of correlation coefficients but the most commonly \nused measure of correlation is the Pearson\u2019s correlation coefficient- (r)\n\u2713The Pearson r range between -1 to +1.  \n\u2713Sign indicate the direction.\n\u2713The numerical value indicates the strength. \n\u2713Perfect correlation : -1 or 1 \n\u2713No correlation: 0 \n\u2713A correlation of zero indicates the value are not linearly related. \n\u2713However, it is possible they are related in curvilinear fashion.",
+    "nodes": []
+  },
+  {
+    "node_id": "0018",
+    "title": "Page 18",
+    "page_index": 18,
+    "text": "Pearson\u2019s Correlation Coefficient:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n18\n\u2751The Coefficient of Correlation (r) is a measure of the strength of the \nrelationship between two variables.",
+    "nodes": []
+  },
+  {
+    "node_id": "0019",
+    "title": "Page 19",
+    "page_index": 19,
+    "text": "Pearson\u2019s Correlation Coefficient:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n19\n\u2751EXAMPLE: Using the Copier Sales of America data  which a \nscatter plot is shown below, compute the correlation \ncoefficient and coefficient of determination.\nUsing the formula:\n\u2751How do we interpret a correlation of 0.759? \n\u2751First, it is positive, so we see there is a direct relationship between the \nnumber of sales calls and the number of copiers sold. The value of 0.759 is \nfairly close to 1.00, so we conclude that the association is strong.  However, \ndoes this mean that more sales calls cause more sales?  No, we have not \ndemonstrated cause and effect here, only that the two variables\u2014sales \ncalls and copiers sold\u2014are related.",
+    "nodes": []
+  },
+  {
+    "node_id": "0020",
+    "title": "Page 20",
+    "page_index": 20,
+    "text": "Testing the Significance of the Correlation Coefficient \u2013 Copier Sales Example:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n20\n\u2751H0: \uf072 = 0 (the correlation in the population \nis 0)\n\u2751H1: \uf072 \u2260 0 (the correlation in the population \nis not 0)\n Reject H0 if:\n t > t\uf061/2,n-2  or t < -t\uf061/2,n-2 \n   t > t0.025,8 or t < -t0.025,8\n   t > 2.306 or t < -2.306\n\u2751The computed t (3.297) is within the rejection region, therefore, we will reject H0. \nThis means the correlation in the population is not zero. From a practical \nstandpoint, it indicates to the sales manager that there is correlation with respect \nto the number of sales calls made and the number of copiers sold in the population \nof salespeople.",
+    "nodes": []
+  },
+  {
+    "node_id": "0021",
+    "title": "Page 21",
+    "page_index": 21,
+    "text": "Limitations of r:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n21\n\u2751When r = 1 or r = -1:\n\u2713We can predict y from x with certainty\n\u2713all data points are on a straight line: y = ax + b\n\u2751r is actually \n\u2713r = true r of whole population\n\u2713  = estimate of r based on data\n\u2751r is very sensitive to extreme values:\nr\u02c6\nr\u02c6\n0\n1\n2\n3\n4\n5\n0\n1\n2\n3\n4\n5\n6",
+    "nodes": []
+  },
+  {
+    "node_id": "0022",
+    "title": "Page 22",
+    "page_index": 22,
+    "text": "Regression:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n22\n\u2751Correlation tells you if there is an association between x and y but it \ndoesn\u2019t describe the relationship or allow you to predict one variable from \nthe other.\n\u2751To do this we need REGRESSION!",
+    "nodes": []
+  },
+  {
+    "node_id": "0023",
+    "title": "Page 23",
+    "page_index": 23,
+    "text": "Best Fit Line: Linear Regression\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n23\n\u2751Aim of linear regression is to fit a straight line, \u0177 = ax + b, to data that \ngives best prediction of y for any value of x.\n\u2751This will be the line that minimises distance between data and fitted line, \ni.e., the residuals.\n\u03b5\n\u0177 = ax + b\n\u03b5   =  residual error\n=  yi , true value\nslope\nintercept\n=  \u0177, predicted value",
+    "nodes": []
+  },
+  {
+    "node_id": "0024",
+    "title": "Page 24",
+    "page_index": 24,
+    "text": "Method of Least Square Regression:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n24\n\u2751To obtain the estimates of the coefficients \u2018a\u2019 and \u2018b\u2019, the least squares \nmethod minimizes the sum of squares of residuals. \n\u2751The residual for the ith data point ei is defined as the difference between \nthe observed value of the response variable, yi, and the estimate of the \nresponse variable, \u0177i, and is identified as the error associated with the \ndata. i.e., ei = yi\u2013\u0177i , i =1 ,2, ..., n.\n\u2751The method of least squares helps us to find the values of unknowns \u2018a\u2019 and \n\u2018b\u2019 in such a way that the following two conditions are satisfied:\n\u2751Sum of the residuals is zero. That is\n  \n\u2751Sum of the squares of the residuals                                        is the least.\n2\n1\n\u02c6\n(\n)\n0\nn\ni\ni\ni\ny\ny\n=\n\u2212\n=\n\uf0e5\n=\n=\n\u2212\n\uf0e5\n2\n1\n\u02c6\n( ,\n)\n(\n)\nn\ni\ni\ni\nE a b\ny\ny",
+    "nodes": []
+  },
+  {
+    "node_id": "0025",
+    "title": "Page 25",
+    "page_index": 25,
+    "text": "Method of Least Square Regression:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n25\n\u2751To find the best line we must minimise the sum of the squares of the \nresiduals (the vertical distances from the data points to our line)\n\u2713Residual (\u03b5) = y - \u0177\n\u2713Sum of squares of residuals E(a, b) = \u03a3 (y \u2013 \u0177)2 \n\u2713Model line: \u0177 = ax + b\n\u2751 We must find values of a and b that minimise: \nE(a, b)=\u03a3 (y \u2013 \u0177)2 \na = slope, b = intercept",
+    "nodes": []
+  },
+  {
+    "node_id": "0026",
+    "title": "Page 26",
+    "page_index": 26,
+    "text": "Solution of Least Square Regression Problem:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n26\n\u2751The method of least squares can be applied to determine the estimates of \u2018a\u2019\nand \u2018b\u2019 in the simple linear regression equation using the given data\n (x1,y1), (x2,y2), ..., (xn,yn) by minimizing\n2\n1\n\u02c6\nMin\n( , )\n(\n)\nn\ni\ni\ni\nE a b\ny\ny\n=\n=\n\u2212\n\uf0e5\n2\n1\n, Min\n( , )\n(\n)\nn\ni\ni\ni\nor\nE a b\ny\nax\nb\n=\n=\n\u2212\n\u2212\n\uf0e5\n\u2751Differentiation of E(a,b) with respect to \u2018a\u2019 and \u2018b\u2019 and equating them to \nzero constitute a set of two equations as described below:\n1\n( , )\n2\n(\n)\n0\nn\ni\ni\ni\ni\nE a b\nx\ny\nax\nb\na\n=\n\uf0b6\n= \u2212\n\u2212\n\u2212\n=\n\uf0b6\n\uf0e5\n1\n( , )\n2\n(\n)\n0\nn\ni\ni\ni\nE a b\ny\nax\nb\nb\n=\n\uf0b6\n= \u2212\n\u2212\n\u2212\n=\n\uf0b6\n\uf0e5",
+    "nodes": []
+  },
+  {
+    "node_id": "0027",
+    "title": "Page 27",
+    "page_index": 27,
+    "text": "Solution of Least Square Regression (Contd.)\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n27\n\u2751The above two equations give\n\u2751These equations are popularly known as normal equations. Solving these \nequations for \u2018a\u2019 and \u2018b\u2019 yield the estimates      and      as follows:      \n2\n1\n1\n1\nn\nn\nn\ni\ni\ni i\ni\ni\ni\nax\nbx\nx y\n=\n=\n=\n+\n=\n\uf0e5\n\uf0e5\n\uf0e5\n1\n1\nn\nn\ni\ni\ni\ni\nax\nnb\ny\n=\n=\n+\n=\n\uf0e5\n\uf0e5\n\u02c6a\n\u02c6b\nand\n1\n2\n2\n1\n1\n(\n, )\n\u02c6\n(\n)\n1\nn\ni i\ny\ni\nxy\nn\nx\ni\ni\nx y\nx y\nn\nS\nCOV X Y\na\nr\nV X\nS\nx\nx\nn\n=\n=\n\u2212\n=\n=\n=\n\u2212\n\uf0e5\n\uf0e5\nand\n\u02c6\n\u02c6\nb\ny\nax\n=\n\u2212",
+    "nodes": []
+  },
+  {
+    "node_id": "0028",
+    "title": "Page 28",
+    "page_index": 28,
+    "text": "Solution of Least Square Regression (Contd.)\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n28\n\u2751we can see that \n\u2713A low correlation coefficient gives a flatter slope (small value of a)\n\u2713Large spread of y, i.e., high standard deviation, results in a steeper slope \n(high value of a)\n\u2713Large spread of x, i.e. high standard deviation, results in a flatter slope \n(high value of a)\nr = correlation coefficient of x and y\nsy = standard deviation of y\nsx = standard deviation of x\n\u2751Thus, from the \nexpression\ny\nx\nrs\na= s",
+    "nodes": []
+  },
+  {
+    "node_id": "0029",
+    "title": "Page 29",
+    "page_index": 29,
+    "text": "Solution of Least Square Regression (Contd.)\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n29\n\u2751Our model equation is \u0177 = ax + b\n\u2751This line must pass through the mean so: \n\u2751We can put our equation for a into this giving: \nr = correlation coefficient of x and y\nsy = standard deviation of y\nsx = standard deviation of x\n\u2751The smaller the correlation, the closer the intercept is to the mean of y.\ny = a x + b\ny\nx\nrs\nb= y\nx\ns\n\u2212\nb= y\na x\n\u2212",
+    "nodes": []
+  },
+  {
+    "node_id": "0030",
+    "title": "Page 30",
+    "page_index": 30,
+    "text": "Solution of Least Square Regression (Contd.)\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n30\n\u2751Our model equation is \u0177 = ax + b\n\u2751This line must pass through the mean so: \n\u2751If the correlation is zero, we will simply predict the mean of y for every \nvalue of x, and our regression line is just a flat straight line crossing the \nx-axis at y\n\u2751But this isn\u2019t very useful.\n\u2751We can calculate the regression line for any data, but the important \nquestion is how well does this line fit the data, or how good is it at \npredicting y from x\n\u0177 = ax + b = \nr sy\nsx\nr sy\nsx\nx  + y - \nx\nRearranges to:\nr sy\nsx\n\u0177 =\n(x \u2013 x) + y\na\na\nb\na",
+    "nodes": []
+  },
+  {
+    "node_id": "0031",
+    "title": "Page 31",
+    "page_index": 31,
+    "text": "Sum of Square Errors:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n31\n\u2751This is the sum of differences between the points and the regression line.\n\u2751It can serve as a measure of how well the line fits the data.  \n\u2751SSE is defined by\n\u2751A shortcut formula of SSE is given by\n2\n1\n\u02c6\n(\n)\nn\ni\nSSE\ny\ny\n=\n=\n\u2212\n\uf0e5\n2\n2\n2\n[\n(\n, )]\n(\n1)\ny\nx\nCOV X Y\nSSE\nn\nS\nS\n=\n\u2212\n\u2212",
+    "nodes": []
+  },
+  {
+    "node_id": "0032",
+    "title": "Page 32",
+    "page_index": 32,
+    "text": "How Good is the Regression Model?\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n32\n\u2751Total variance of y:\n\u2751Variance of predicted y values (\u0177):\n\u2751Error variance:\nThis is the variance explained by our regression model\nThis is the variance of the \nerror between our predicted y \nvalues and the actual y values, \nand thus is the variance in y \nthat is NOT explained by the \nregression model\n\u2751Hence, standard error estimate:\n2\n2\n\u02c6\n(\n)\n1\ny\ny\ny\ny\nSSE\nS\nn\ndf\n\u2212\n=\n=\n\u2212\n\uf0e5\n2\n2\u02c6\n\u02c6\n\u02c6\n(\n)\n1\npred\ny\ny\nSSE\ny\ny\nS\nn\ndf\n\u2212\n=\n=\n\u2212\n\uf0e5\n2\n2\n\u02c6\n(\n)\n2\ner\ner\ny\ny\nSSE\nS\nn\ndf\n\uf065\n\u2212\n=\n=\n\u2212\n\uf0e5\n2\ner\nSSE\nS\nn\n\uf065=\n\u2212",
+    "nodes": []
+  },
+  {
+    "node_id": "0033",
+    "title": "Page 33",
+    "page_index": 33,
+    "text": "Regression Equation Example:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n33\n\u2751Recall the example involving Copier Sales of America. Use the least \nsquares method to determine a linear equation to express the relationship \nbetween the two variables. \n\u2751What is the expected number of copiers sold by a representative who \nmade 20 calls?\nStep 1 \u2013 Find the slope (a) of the \nline:\nStep 2 \u2013 Find the y-intercept (b):\n14.337\n0.759\n1.1842\n9.189\ny\nx\ns\na\nr\ns\n\uf0e6\n\uf0f6\n\uf0e6\n\uf0f6\n=\n=\n=\n\uf0e7\n\uf0f7\n\uf0e7\n\uf0f7\n\uf0e8\n\uf0f8\n\uf0e8\n\uf0f8\n45 1.1842(22)\n18.9476\nb\nY\naX\n=\n\u2212\n=\n\u2212\n=",
+    "nodes": []
+  },
+  {
+    "node_id": "0034",
+    "title": "Page 34",
+    "page_index": 34,
+    "text": "Regression Equation Example (Contd.):\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n34\n\u2751The expected number of copiers sold by a representative who made 20 \ncalls is\n\u02c6\n\u02c6\n1.1842\n18.9476\nY\naX\nb\nY\nX\n=\n+\n\uf0de\n=\n+\n\u2751The expected number of copiers sold by a representative who made 20 calls \nis\n\u02c6\n1.1842(20)\n18.9476\n42.6316\nY =\n+\n=",
+    "nodes": []
+  },
+  {
+    "node_id": "0035",
+    "title": "Page 35",
+    "page_index": 35,
+    "text": "Standard Error Estimate of the Model:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n35\n\u2751Step1: Compute the estimated y values using the regression equation:\n\u02c6\n1.1842\n18.9476\nY\nX\n=\n+\n\u2751Step 2: Apply the formula:\n901\n9\n2\n10\n211\n784\n2\n2\n.\n.\nn\n)\nY\nY\n(\ns\n^\nx.y\n=\n\u2212\n=\n\u2212\n\u2212\n\uf053\n=",
+    "nodes": []
+  },
+  {
+    "node_id": "0036",
+    "title": "Page 36",
+    "page_index": 36,
+    "text": "Confidence Interval and Prediction Interval Estimates of Y:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n36\n\u2751A prediction interval reports the range of values of Y for a particular  \n \nvalue of X.\n\u2751A confidence interval reports the mean value of Y for a given X. \n2\n.\n2\n1\n(\n)\n\u02c6\n(\n)\n(\n)\ny x\nX\nX\nY\nt s\nn\nX\nX\n\u2212\n\uf0b1\n+\n\u2212\n\uf0e5\n\u2751Confidence interval for the \nmean of Y, Given X:\n2\n.\n2\n1\n(\n)\n\u02c6\n(\n) 1\n(\n)\ny x\nX\nX\nY\nt s\nn\nX\nX\n\u2212\n\uf0b1\n+\n+\n\u2212\n\uf0e5\n\u2751Prediction interval \nfor Y, Given X:",
+    "nodes": []
+  },
+  {
+    "node_id": "0037",
+    "title": "Page 37",
+    "page_index": 37,
+    "text": "Confidence Interval and Prediction Interval Estimates of Y:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n37\n\u2751From the Copier Sales of America problem, determine a 95 percent \nconfidence interval for all sales representatives who make 25 calls. \n\u2751Step 1 \u2013 Compute the point estimate of Y-\n     In other words, determine the number of copiers we expect a sales \nrepresentative to sell if he or she makes 25 calls. \n\u2751Step 2 \u2013 Find the value of t\n\u2713To find the t value, we need to first know the number of degrees of \nfreedom. In this case the degrees of freedom is n - 2 = 10 \u2013 2 = 8. \n\u2713We set the confidence level at 95 percent. \n\u2713The value of t is 2.306.\n\u02c6\n1.1842\n18.9476\n1.1842(25)\n18.9476\n48.5526\nY\nX\n=\n+\n=\n+\n=",
+    "nodes": []
+  },
+  {
+    "node_id": "0038",
+    "title": "Page 38",
+    "page_index": 38,
+    "text": "Confidence Interval and Prediction Interval Estimates of Y:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n38\n\u2751Step 1 \u2013 Compute              and\n     \n\u2751Step 4 \u2013 Use the formula above by substituting the numbers computed in \nprevious slides\n(\n)\nX\nX \u2212\n(\n)\n\uf0e5\n\u2212\n2\nX\nX\n\u2751\nThus, the 95 percent confidence \ninterval for the average sales of \nall sales representatives who \nmake 25 calls is from 40.9170 up \nto 56.1882 copiers.",
+    "nodes": []
+  },
+  {
+    "node_id": "0039",
+    "title": "Page 39",
+    "page_index": 39,
+    "text": "Prediction Interval Estimates of Y:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n39\n\u2751From the Copier Sales of America problem, determine a 95 percent \nprediction interval for Sheila Baker, a West Coast sales \nrepresentative who made 25 calls. \n\u2751Step 1 \u2013 Compute the point estimate of Y-\n       In other words, determine the number of copiers we expect a sales \nrepresentative to sell if he or she makes 25 calls. \n\u2751Step 2 \u2013 Using the information \ncomputed earlier in the confidence \ninterval estimation example, use \nthe formula:\n\u2751\nThus, if Sheila Baker makes 25 sales \ncalls, the number of copiers she will sell \nwill be between about 24 and 73 copiers.\n\u02c6\n1.1842\n18.9476\n1.1842(25)\n18.9476\n48.5526\nY\nX\n=\n+\n=\n+\n=",
+    "nodes": []
+  },
+  {
+    "node_id": "0040",
+    "title": "Page 40",
+    "page_index": 40,
+    "text": "General Linear Regression Model:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n40\n\u2751Linear regression is actually a form of the General Linear Model where the \nparameters are a, the slope of the line, and b, the intercept.\n\u2751A General Linear Model is just any model that describes the data in terms \nof a straight line.\ny\nax\nb\n\uf065\n=\n+\n+",
+    "nodes": []
+  },
+  {
+    "node_id": "0041",
+    "title": "Page 41",
+    "page_index": 41,
+    "text": "Multivariate Regression:\nMarch 4, 2026\nRegression Analysis              S. Ghorai ( Dept. AEIE, HITK)\n41\n\u2751Multivariate regression is used to determine the effect of a number of \nindependent variables, x1, x2, x3, etc., on a single dependent variable, y.\n\u2751The different x variables are combined in a linear way and each has its own \nregression coefficient:\n  \n\u2751The \u2018a\u2019 parameters reflect the independent contribution of each \nindependent variable, x, to the value of the dependent variable, y.\n1 1\n2\n2\n3 3\n....\nn\nn\ny\na x\na x\na x\na x\nb\n\uf065\n=\n+\n+\n+\n+\n+\n+",
+    "nodes": []
+  }
+]

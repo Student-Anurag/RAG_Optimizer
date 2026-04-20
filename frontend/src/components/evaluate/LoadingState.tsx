@@ -1,13 +1,34 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
 
 const STEPS = [
-  "Building document tree…",
-  "Running Vectorless pipeline…",
-  "Running Vectored pipeline…",
-  "LLM judge scoring answers…",
+  { label: "Building document tree…",      duration: 6000  },
+  { label: "Running Vectorless pipeline…", duration: 15000 },
+  { label: "Running Vectored pipeline…",   duration: 15000 },
+  { label: "LLM judge scoring answers…",   duration: 10000 },
 ]
 
 export default function LoadingState() {
+  const [activeStep, setActiveStep] = useState(0)
+
+  useEffect(() => {
+    let current = 0
+
+    function advance() {
+      current += 1
+      if (current < STEPS.length) {
+        setActiveStep(current)
+        timer = setTimeout(advance, STEPS[current].duration)
+      }
+    }
+
+    let timer = setTimeout(advance, STEPS[0].duration)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-border bg-card p-5">
@@ -15,18 +36,46 @@ export default function LoadingState() {
           Evaluation in progress
         </p>
         <div className="space-y-3">
-          {STEPS.map((step, i) => (
-            <div key={step} className="flex items-center gap-3">
-              <span
-                className="h-2 w-2 rounded-full bg-violet-500 animate-pulse"
-                style={{ animationDelay: `${i * 0.35}s` }}
-              />
-              <span className="text-sm text-muted-foreground">{step}</span>
-            </div>
-          ))}
+          {STEPS.map((step, i) => {
+            const isDone    = i < activeStep
+            const isActive  = i === activeStep
+            const isPending = i > activeStep
+
+            return (
+              <div key={step.label} className="flex items-center gap-3">
+                {/* Indicator dot */}
+                <span
+                  className={cn(
+                    "h-2 w-2 rounded-full transition-all duration-500",
+                    isDone   && "bg-emerald-500",
+                    isActive && "bg-violet-500 animate-pulse",
+                    isPending && "bg-muted-foreground/30"
+                  )}
+                />
+
+                {/* Step label */}
+                <span
+                  className={cn(
+                    "text-sm transition-colors duration-500",
+                    isDone   && "text-emerald-500 line-through decoration-emerald-500/50",
+                    isActive && "text-foreground font-medium",
+                    isPending && "text-muted-foreground/50"
+                  )}
+                >
+                  {step.label}
+                </span>
+
+                {/* Done checkmark */}
+                {isDone && (
+                  <span className="ml-auto text-xs text-emerald-500">✓</span>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
 
+      {/* Skeleton pipeline cards */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {[0, 1].map((i) => (
           <div
