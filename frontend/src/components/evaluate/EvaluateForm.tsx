@@ -33,8 +33,8 @@ export default function EvaluateForm({
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-      <div className="grid gap-6 md:grid-cols-2">
+    <div className="rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-6">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <Label className="text-sm font-medium">Document (PDF)</Label>
           <DropZone
@@ -52,7 +52,7 @@ export default function EvaluateForm({
           <Textarea
             id="query"
             placeholder="e.g. What optimisation algorithm does the paper use?"
-            className="min-h-[128px] resize-none rounded-xl text-sm"
+            className="min-h-[120px] resize-none rounded-xl text-sm sm:min-h-[128px]"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             disabled={isLoading}
@@ -63,7 +63,7 @@ export default function EvaluateForm({
         </div>
       </div>
 
-      <div className="mt-5 flex items-center justify-between border-t border-border/60 pt-5">
+      <div className="mt-4 flex flex-col gap-3 border-t border-border/60 pt-4 sm:mt-5 sm:flex-row sm:items-center sm:justify-between sm:pt-5">
         <p className="text-xs text-muted-foreground">
           Both pipelines run in parallel — expect 20–60 s
         </p>
@@ -82,7 +82,7 @@ export default function EvaluateForm({
           )}
           <Button
             size="sm"
-            className="gap-2 bg-violet-600 px-6 text-white hover:bg-violet-700"
+            className="flex-1 gap-2 bg-violet-600 px-4 text-white hover:bg-violet-700 sm:flex-none sm:px-6"
             onClick={handleSubmit}
             disabled={!canSubmit}
           >

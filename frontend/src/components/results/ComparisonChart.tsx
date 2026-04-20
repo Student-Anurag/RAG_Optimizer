@@ -23,19 +23,17 @@ export default function ComparisonChart({ scores, reasoning }: ComparisonChartPr
   ]
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-      <h3 className="mb-6 text-sm font-semibold">Score comparison</h3>
+    <div className="rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-6">
+      <h3 className="mb-4 text-sm font-semibold sm:mb-6">Score comparison</h3>
 
-      {/* Radar chart */}
-      <div className="h-72 w-full">
+      {/* Taller on desktop, compact on mobile */}
+      <div className="h-56 w-full sm:h-72">
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart data={data} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
-            {/* FIX 4: visible grid lines against dark background */}
+          <RadarChart data={data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
             <PolarGrid stroke="rgba(255,255,255,0.15)" />
-            {/* FIX: white axis labels */}
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fontSize: 12, fill: "#ffffff" }}
+              tick={{ fontSize: 11, fill: "#ffffff" }}
             />
             <Radar
               name="Vectorless"
@@ -55,9 +53,7 @@ export default function ComparisonChart({ scores, reasoning }: ComparisonChartPr
             />
             <Legend
               formatter={(v) => (
-                <span style={{ fontSize: 12, color: "#ffffff" }}>
-                  {v}
-                </span>
+                <span style={{ fontSize: 12, color: "#ffffff" }}>{v}</span>
               )}
             />
             <Tooltip
@@ -73,7 +69,7 @@ export default function ComparisonChart({ scores, reasoning }: ComparisonChartPr
       </div>
 
       {/* Reasoning accordion */}
-      <div className="mt-6 border-t border-border/60 pt-5">
+      <div className="mt-4 border-t border-border/60 pt-4 sm:mt-6 sm:pt-5">
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Judge's reasoning
         </p>

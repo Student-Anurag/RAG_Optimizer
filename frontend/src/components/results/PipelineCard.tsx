@@ -33,17 +33,17 @@ export default function PipelineCard({
   return (
     <div
       className={cn(
-        "flex flex-col rounded-2xl border bg-card p-5 shadow-sm transition-shadow hover:shadow-md",
+        "flex flex-col rounded-2xl border bg-card p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5",
         isWinner && isVectorless  && "ring-2 ring-violet-400  ring-offset-2",
         isWinner && !isVectorless && "ring-2 ring-emerald-400 ring-offset-2",
       )}
     >
       {/* ── Header ── */}
-      <div className="mb-4 flex items-start justify-between">
+      <div className="mb-4 flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
           <span
             className={cn(
-              "h-2.5 w-2.5 rounded-full",
+              "h-2.5 w-2.5 shrink-0 rounded-full",
               isVectorless ? "bg-violet-500" : "bg-emerald-500"
             )}
           />
@@ -97,8 +97,8 @@ export default function PipelineCard({
         {SCORE_METRICS.map(({ key, label }, i) => {
           const score = scores[key as keyof PipelineScores] as number
           return (
-            <div key={key} className="flex items-center gap-3">
-              <span className="w-24 shrink-0 text-xs text-muted-foreground">
+            <div key={key} className="flex items-center gap-2 sm:gap-3">
+              <span className="w-20 shrink-0 text-xs text-muted-foreground sm:w-24">
                 {label}
               </span>
               <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-muted">

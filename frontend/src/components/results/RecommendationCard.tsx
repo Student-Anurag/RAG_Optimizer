@@ -44,13 +44,13 @@ export default function RecommendationCard({
   return (
     <div
       className={cn(
-        "rounded-2xl border bg-gradient-to-br p-6 shadow-sm",
+        "rounded-2xl border bg-gradient-to-br p-4 shadow-sm sm:p-6",
         wc.gradient,
         wc.border,
       )}
     >
       {/* ── Top row ── */}
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4">
         <div className="flex items-start gap-3">
           <div
             className={cn(
@@ -65,8 +65,8 @@ export default function RecommendationCard({
             )}
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-lg font-bold">{wc.label}</h2>
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-base font-bold sm:text-lg">{wc.label}</h2>
               <Badge className={cn("text-xs", wc.badge)}>
                 {winner === "vectorless"
                   ? "Vectorless"
@@ -88,7 +88,7 @@ export default function RecommendationCard({
         {/* Hallucination risk badge */}
         <div
           className={cn(
-            "flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium",
+            "flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium",
             rc.className
           )}
         >
@@ -103,7 +103,7 @@ export default function RecommendationCard({
       </p>
 
       {/* ── Actionable recommendation ── */}
-      <div className="mt-4 rounded-xl border border-border/50 bg-background/60 p-4">
+      <div className="mt-4 rounded-xl border border-border/50 bg-background/60 p-3 sm:p-4">
         <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Recommendation
         </p>
