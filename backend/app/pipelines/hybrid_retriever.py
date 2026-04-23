@@ -23,8 +23,7 @@ def _get_embeddings() -> HuggingFaceEmbeddings:
     global _embeddings
     if _embeddings is None:
         _embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2",
-            cache_folder="./model_cache"
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
     return _embeddings
 
