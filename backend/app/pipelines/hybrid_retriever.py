@@ -23,10 +23,10 @@ def _get_embeddings() -> HuggingFaceEmbeddings:
     global _embeddings
     if _embeddings is None:
         _embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
+            model_name="sentence-transformers/all-MiniLM-L6-v2",
+            cache_folder="./model_cache"
         )
     return _embeddings
-
 
 def _save_bm25_cache(chunks: list[Document]) -> None:
     """Persist BM25 corpus (raw text only) to disk as JSON."""

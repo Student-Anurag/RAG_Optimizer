@@ -1,7 +1,6 @@
-import { Trophy, Minus, AlertTriangle } from "lucide-react"
-import { Badge }  from "@/components/ui/badge"
-import { cn }     from "@/lib/utils"
-import { HALLUCINATION_RISK } from "@/lib/constants"
+import { Trophy, Minus } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { cn }   from "@/lib/utils"
 import type { EvaluationReport } from "@/types"
 
 const WINNER_CONFIG = {
@@ -33,13 +32,8 @@ export default function RecommendationCard({
 }: {
   report: EvaluationReport
 }) {
-  const {
-    winner, summary, recommendation, hallucination_risk,
-    score_diff, scores,
-  } = report
-
-  const wc  = WINNER_CONFIG[winner]
-  const rc  = HALLUCINATION_RISK[hallucination_risk]
+  const { winner, summary, recommendation, score_diff, scores } = report
+  const wc = WINNER_CONFIG[winner]
 
   return (
     <div
@@ -50,50 +44,37 @@ export default function RecommendationCard({
       )}
     >
       {/* ── Top row ── */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4">
-        <div className="flex items-start gap-3">
-          <div
-            className={cn(
-              "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl",
-              wc.iconBg
-            )}
-          >
-            {winner === "tie" ? (
-              <Minus className="h-5 w-5" />
-            ) : (
-              <Trophy className="h-5 w-5" />
-            )}
-          </div>
-          <div>
-            <div className="flex flex-wrap items-center gap-2">
-              <h2 className="text-base font-bold sm:text-lg">{wc.label}</h2>
-              <Badge className={cn("text-xs", wc.badge)}>
-                {winner === "vectorless"
-                  ? "Vectorless"
-                  : winner === "vectored"
-                  ? "Vectored"
-                  : "Tie"}
-              </Badge>
-            </div>
-            {winner !== "tie" && (
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                by {Math.abs(score_diff)} point
-                {Math.abs(score_diff) !== 1 ? "s" : ""} · {scores.vectorless.total}{" "}
-                vs {scores.vectored.total}
-              </p>
-            )}
-          </div>
-        </div>
-
-        {/* Hallucination risk badge */}
+      <div className="flex items-start gap-3">
         <div
           className={cn(
-            "flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium",
-            rc.className
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl",
+            wc.iconBg
           )}
         >
-          <AlertTriangle className="h-3 w-3" />
-          {rc.label}
+          {winner === "tie" ? (
+            <Minus className="h-5 w-5" />
+          ) : (
+            <Trophy className="h-5 w-5" />
+          )}
+        </div>
+        <div>
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-base font-bold sm:text-lg">{wc.label}</h2>
+            <Badge className={cn("text-xs", wc.badge)}>
+              {winner === "vectorless"
+                ? "Vectorless"
+                : winner === "vectored"
+                ? "Vectored"
+                : "Tie"}
+            </Badge>
+          </div>
+          {winner !== "tie" && (
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              by {Math.abs(score_diff)} point
+              {Math.abs(score_diff) !== 1 ? "s" : ""} · {scores.vectorless.total}{" "}
+              vs {scores.vectored.total}
+            </p>
+          )}
         </div>
       </div>
 

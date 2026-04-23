@@ -1,11 +1,11 @@
 "use client"
 import { useState } from "react"
 import { motion }   from "framer-motion"
-import { Trophy, Minus, ChevronDown, ChevronUp, Zap, Database } from "lucide-react"
+import { Trophy, Minus, ChevronDown, ChevronUp, Zap, Database, AlertTriangle } from "lucide-react"
 import { Badge }  from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { cn, formatLatency, scoreToBarColor, scoreToTextColor } from "@/lib/utils"
-import { SCORE_METRICS, GROUNDING_BADGE } from "@/lib/constants"
+import { SCORE_METRICS, GROUNDING_BADGE, HALLUCINATION_RISK } from "@/lib/constants"
 import type { PipelineScores, HallucinationScan } from "@/types"
 
 interface PipelineCardProps {
@@ -23,12 +23,17 @@ interface PipelineCardProps {
 }
 
 export default function PipelineCard({
-  pipelineName, pipelineKey, answer, scores, grounding, isWinner, isTie,
+  pipelineName, pipelineKey, answer, scores, grounding, scan, isWinner, isTie,
   chunks, latency, cacheHit,
 }: PipelineCardProps) {
   const [showChunks, setShowChunks] = useState(false)
-  const isVectorless = pipelineKey === "vectorless"
-  const groundingCfg = GROUNDING_BADGE[grounding] ?? GROUNDING_BADGE["none"]
+  const isVectorless  = pipelineKey === "vectorless"
+  const groundingCfg  = GROUNDING_BADGE[grounding] ?? GROUNDING_BADGE["none"]
+
+  // Map scan.verdict → HALLUCINATION_RISK config (only show if medium or high)
+  const verdict = scan.verdict === "none" ? "low" : scan.verdict
+  const riskCfg = HALLUCINATION_RISK[verdict as keyof typeof HALLUCINATION_RISK]
+  const showRisk = riskCfg && verdict !== "low"
 
   return (
     <div
@@ -74,6 +79,19 @@ export default function PipelineCard({
           </Badge>
         </div>
       </div>
+
+      {/* ── Hallucination risk badge (medium / high only) ── */}
+      {showRisk && (
+        <div
+          className={cn(
+            "mb-3 flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium w-fit",
+            riskCfg.className
+          )}
+        >
+          <AlertTriangle className="h-3 w-3" />
+          {riskCfg.label}
+        </div>
+      )}
 
       {/* ── Grounding verdict ── */}
       {grounding && grounding !== "none" && (

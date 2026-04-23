@@ -209,3 +209,24 @@ chroma_db/
 tree_cache/
 temp_uploads/
 bm25_cache.json/
+
+# Model cache
+model_cache/
+
+# Chroma DB
+chroma_db/
+
+# BM25 cache
+bm25_cache.json
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/
+.next/
+
+# Misc
+.DS_Store
